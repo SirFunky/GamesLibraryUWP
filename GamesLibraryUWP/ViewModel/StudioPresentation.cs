@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GamesLibraryUWP.Model
+namespace GamesLibraryUWP.ViewModel
 {
-    public class Developer
+    public class StudioPresentation
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string studioName
+        {
+            get { return Name + " " + Role + " "; }
+        }
         public string Role { get; set; }
-
-        public List<Game> Games { get; set; }
-        public List<GameDeveloper> GameDevelopers { get; set; }
     }
 }

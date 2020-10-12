@@ -11,6 +11,6 @@ namespace GamesLibraryUWP.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Game> Games { get; set; }
-        public virtual ICollection<GameDeveloper> GameDevelopers { get; set; }
+        public List<GameDeveloper> GameDevelopers { get; set; }
     }
 }

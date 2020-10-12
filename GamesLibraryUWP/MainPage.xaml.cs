@@ -36,18 +36,15 @@ namespace GamesLibraryUWP
                 {
                     var content = await response.Content.ReadAsStringAsync();
                     var gameList = JsonConvert.DeserializeObject<List<Game>>(content);
-
                     foreach (var game in gameList)
                     {
-                        string developer = "";
                         foreach (var gameDeveloper in game.GameDevelopers)
                         {
                             game.Developer = gameDeveloper.Developer;
                         }
-                        //string studio = "";
                         //foreach (var gamedeveloper in game.GameDevelopers)
                         //{
-                        //    studio += gamedeveloper.Studio.Name + " ";
+                        //    studio += gamedeveloper.studio.Name + " ";
                         //}
                     }
                         //Databind the list

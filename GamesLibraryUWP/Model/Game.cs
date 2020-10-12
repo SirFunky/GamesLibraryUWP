@@ -15,6 +15,6 @@ namespace GamesLibraryUWP.Model
         public Publisher Publisher { get; set; }
         public List<Studio> Studio { get; set; }
         public List<Developer> Developer { get; set; }
-        public virtual ICollection<GameDeveloper> GameDevelopers { get; set; }
+        public List<GameDeveloper> GameDevelopers { get; set; }
     }
 }

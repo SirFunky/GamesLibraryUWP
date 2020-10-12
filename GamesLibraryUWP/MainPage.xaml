@@ -45,7 +45,6 @@
                                     <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
                                         <TextBlock Text="Studios: " TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource CaptionTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
                                         <TextBlock Text="{Binding Path=Studio[0].Name }" TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource BodyTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
-                                        <TextBlock Text="{Binding Path=Studio[0].Role}" TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource BodyTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
