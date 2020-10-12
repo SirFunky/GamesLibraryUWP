@@ -35,17 +35,30 @@ namespace GamesLibraryUWP
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    var gameList = JsonConvert.DeserializeObject<List<Game>>(content);
+                    var gameList = JsonConvert.DeserializeObject<List<Model.Game>>(content);
                     foreach (var game in gameList)
                     {
+                        game.Developer = new List<Developer>();
                         foreach (var gameDeveloper in game.GameDevelopers)
                         {
-                            game.Developer = gameDeveloper.Developer;
+                            
+                            if (gameDeveloper.Developer != null)
+                            {
+                                game.Developer.Add(gameDeveloper.Developer);
+                            }
+                            
                         }
-                        //foreach (var gamedeveloper in game.GameDevelopers)
-                        //{
-                        //    studio += gamedeveloper.studio.Name + " ";
-                        //}
+                        game.Studio = new List<Studio>();
+                        foreach (var gameDeveloper in game.GameDevelopers)
+                        {
+
+                            if (gameDeveloper.studio != null)
+                            {
+                                game.Studio.Add(gameDeveloper.studio);
+                            }
+
+                        }
+
                     }
                         //Databind the list
                         lstGames.ItemsSource = gameList;
