@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="GamesLibraryUWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <NavigationView x:Name="navMain">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="mnuHome" Icon="Home" Content="Home" Tag="Home"/>
+                <NavigationViewItem x:Name="mnuAdd" Icon="Add" Content="Add" Tag="Add" Tapped="MnuAdd_Tapped"  />
+                <NavigationViewItem Icon="Edit" Content="Change" Tag="Change" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="contentFrame">
+                <Grid>
+                    <ProgressRing x:Name="prgMain" IsActive="True" Width="50" Height="50"/>
+                    <ListBox x:Name="lstGames" Width="Auto" Margin="0,12,0,0" VerticalAlignment="Top">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,17">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding Name}" TextWrapping="Wrap"  Margin="6,0,12,6"  Style="{ThemeResource SubheaderTextBlockStyle }" Grid.Column="0" />
+                                   <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                                        <TextBlock Text="Publisher: " TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource CaptionTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
+                                        <TextBlock Grid.Row="1" Text="{Binding Path=Publisher.Name}" TextWrapping="NoWrap" Margin="6,12,0,0" Style="{ThemeResource BodyTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}"  Grid.Column="0"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
+                                        <TextBlock Text="Developers: " TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource CaptionTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
+                                        <TextBlock Text="{Binding Path=Developer[0].Name }" TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource BodyTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
+                                        <TextBlock Text="{Binding Path=Developer[0].Role}" TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource BodyTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+                                        <TextBlock Text="Studios: " TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource CaptionTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
+                                        <TextBlock Text="{Binding Path=Studio[0].Name }" TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource BodyTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
+                                        <TextBlock Text="{Binding Path=Studio[0].Role}" TextWrapping="NoWrap" Margin="6,0,0,0" Style="{ThemeResource BodyTextBlockStyle }" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" VerticalAlignment="Bottom"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Frame>
+        </NavigationView>
+    </Grid>
+</Page>
