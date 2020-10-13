@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="GamesLibraryUWP.AddPage"
+    x:Class="GamesLibraryUWP.UpdatePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:GamesLibraryUWP"
@@ -12,13 +12,20 @@
         <NavigationView x:Name="navMain" IsBackEnabled="True" BackRequested="navMain_BackRequested">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="mnuHome" Icon="Home" Content="Home" Tag="Home" Tapped="MnuHome_Tapped"/>
-                <NavigationViewItem x:Name="mnuAdd" Icon="Add" Content="Add" Tag="Add"/>
-                <NavigationViewItem  x:Name="mnuUpdate" Icon="Edit" Content="Change" Tag="Change" Tapped="mnuUpdate_Tapped"/>
+                <NavigationViewItem x:Name="mnuAdd" Icon="Add" Content="Add" Tag="Add" Tapped="MnuAdd_Tapped"  />
+                <NavigationViewItem  x:Name="mnuUpdate" Icon="Edit" Content="Change" Tag="Change"/>
             </NavigationView.MenuItems>
             <Frame x:Name="contentFrame" Margin="12,24,0,12">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock  Text="Name" Width="115" Margin="0,12,12,12"/>
+                        <TextBlock  Text="Game" Width="115" Margin="0,12,12,12"/>
+                        <ComboBox Name="cmbGames" Width="250" Margin="0,12,12,12" SelectionChanged="cmbGames_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                         <TextBox Name="txtName" Width="250"  Margin="0,12,12,12"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
@@ -59,11 +66,9 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                     </StackPanel>
-                    <Button Name="btnSave" Content="Save your game!" Click="BtnSave_Click" Margin="50,12,12,12"/>
+                    <Button Name="btnSave" Content="Update your game!" Click="BtnSave_Click" Margin="50,12,12,12"/>
                 </StackPanel>
             </Frame>
         </NavigationView>
     </Grid>
 </Page>
-
-    

@@ -131,6 +131,9 @@
     <Compile Include="Model\Publisher.cs" />
     <Compile Include="Model\Studio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\StudioPresentation.cs" />
     <Compile Include="ViewModel\DeveloperPresentation.cs" />
   </ItemGroup>
@@ -161,6 +164,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

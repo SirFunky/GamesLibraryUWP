@@ -12,8 +12,7 @@ namespace GamesLibraryUWP.ViewModel
         public string Name { get; set; }
         public string studioName
         {
-            get { return Name + " " + Role + " "; }
+            get { return Name + " "; }
         }
-        public string Role { get; set; }
     }
 }

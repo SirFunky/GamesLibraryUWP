@@ -15,7 +15,8 @@ namespace GamesLibraryUWP
 {
     public sealed partial class AddPage : Page
     {
-        private const string BASE_URL = @"http://localhost:32922//api/"; 
+        private const string BASE_URL = @"http://localhost:32922//api/";
+        #region Load
         public AddPage()
         {
             this.InitializeComponent();
@@ -23,7 +24,6 @@ namespace GamesLibraryUWP
             LoadPublishers();
             LoadStudios();
         }
-
         private async void LoadPublishers()
         {
             try
@@ -43,7 +43,6 @@ namespace GamesLibraryUWP
             }
             catch (Exception ex)
             {
-                //ToDo Give errormessage to user and possibly log error
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
         }
@@ -61,14 +60,12 @@ namespace GamesLibraryUWP
                     var content = await response.Content.ReadAsStringAsync();
                     var developerList = JsonConvert.DeserializeObject<List<Developer>>(content);
 
-                    //Databind the ViewModel presentation list
                     cmbDeveloper.ItemsSource = GetPresentationList(developerList);
                     cmbDeveloper.SelectedIndex = 0;
                 }
             }
             catch (Exception ex)
             {
-                //ToDo Give errormessage to user and possibly log error
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
         }
@@ -85,21 +82,16 @@ namespace GamesLibraryUWP
                     var content = await response.Content.ReadAsStringAsync();
                     var studioList = JsonConvert.DeserializeObject<List<Developer>>(content);
 
-                    //Databind the ViewModel presentation list
                     cmbStudio.ItemsSource = GetPresentationList(studioList);
                     cmbStudio.SelectedIndex = 0;
                 }
             }
             catch (Exception ex)
             {
-                //ToDo Give errormessage to user and possibly log error
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
         }
 
-
-
-        //In this case we have created a presentation class to show both first and last name. Could be done in simpler ways, but with more complex data it is a good solution
         private List<DeveloperPresentation> GetPresentationList(List<Developer> developerList)
         {
             List<DeveloperPresentation> returnList = new List<DeveloperPresentation>();
@@ -110,14 +102,14 @@ namespace GamesLibraryUWP
             }
             return returnList;
         }
-
+        #endregion
+        #region AddGame
         public async System.Threading.Tasks.Task AddGame()
         {
             try
             {
                 HttpClient client = new HttpClient();
 
-                //We need to convert back from ViewModel AuthorPresentation to Author
                 DeveloperPresentation selectedDeveloper = (DeveloperPresentation)cmbDeveloper.SelectedItem;
                 Developer gameDeveloper = new Developer { Id = selectedDeveloper.Id, Name = selectedDeveloper.Name, Role = selectedDeveloper.Role };
 
@@ -129,7 +121,7 @@ namespace GamesLibraryUWP
                 Game newGame = new Game();
                 newGame.Name = txtName.Text;
                 newGame.Gener = txtGener.Text;
-                //newGame.NumberOfPlayers = txtNumPlayers;
+                newGame.NumberOfPlayers = int.Parse(txtNumPlayers.Text);
                 newGame.Publisher.Id = selectedPublisher.Id;
                 newGame.Studio = new List<Studio>();
                 newGame.Studio.Add(gameStudio);
@@ -140,20 +132,21 @@ namespace GamesLibraryUWP
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 string URL = BASE_URL + "Games";
                 var response = await client.PostAsync(URL, content);
-                var responseString = await response.Content.ReadAsStringAsync(); //ToDo: Handle an error response from web service
+                var responseString = await response.Content.ReadAsStringAsync(); 
                 System.Diagnostics.Debug.WriteLine(responseString);
             }
             catch (Exception ex)
             {
-                //ToDo Give errormessage to user and possibly log error
+                
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
         }
+        #endregion
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             await AddGame();
-            var dialog = new MessageDialog("Your game is saved"); //ToDo: Handle an error response from web service
+            var dialog = new MessageDialog("Your game is saved");
             await dialog.ShowAsync();
         }
 
@@ -179,5 +172,9 @@ namespace GamesLibraryUWP
 
         #endregion
 
+        private void mnuUpdate_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(UpdatePage));
+        }
     }
 }

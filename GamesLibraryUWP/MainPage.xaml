@@ -12,7 +12,7 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="mnuHome" Icon="Home" Content="Home" Tag="Home"/>
                 <NavigationViewItem x:Name="mnuAdd" Icon="Add" Content="Add" Tag="Add" Tapped="MnuAdd_Tapped"  />
-                <NavigationViewItem Icon="Edit" Content="Change" Tag="Change" />
+                <NavigationViewItem  x:Name="mnuUpdate" Icon="Edit" Content="Change" Tag="Change" Tapped="mnuUpdate_Tapped" />
             </NavigationView.MenuItems>
             <Frame x:Name="contentFrame">
                 <Grid>
