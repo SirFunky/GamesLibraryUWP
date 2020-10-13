@@ -60,7 +60,7 @@ namespace GamesLibraryUWP
                     var content = await response.Content.ReadAsStringAsync();
                     var developerList = JsonConvert.DeserializeObject<List<Developer>>(content);
 
-                    cmbDeveloper.ItemsSource = GetPresentationList(developerList);
+                    cmbDeveloper.ItemsSource = GetPresentationListDeveloper(developerList);
                     cmbDeveloper.SelectedIndex = 0;
                 }
             }
@@ -80,9 +80,9 @@ namespace GamesLibraryUWP
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    var studioList = JsonConvert.DeserializeObject<List<Developer>>(content);
+                    var studioList = JsonConvert.DeserializeObject<List<Studio>>(content);
 
-                    cmbStudio.ItemsSource = GetPresentationList(studioList);
+                    cmbStudio.ItemsSource = GetPresentationListStudio(studioList);
                     cmbStudio.SelectedIndex = 0;
                 }
             }
@@ -92,12 +92,22 @@ namespace GamesLibraryUWP
             }
         }
 
-        private List<DeveloperPresentation> GetPresentationList(List<Developer> developerList)
+        private List<DeveloperPresentation> GetPresentationListDeveloper(List<Developer> developerList)
         {
             List<DeveloperPresentation> returnList = new List<DeveloperPresentation>();
             foreach (var developer in developerList)
             {
                 DeveloperPresentation presentData = new DeveloperPresentation { Id = developer.Id, Name = developer.Name, Role = developer.Role };
+                returnList.Add(presentData);
+            }
+            return returnList;
+        }
+        private List<StudioPresentation> GetPresentationListStudio(List<Studio> studioList)
+        {
+            List<StudioPresentation> returnList = new List<StudioPresentation>();
+            foreach (var studio in studioList)
+            {
+                StudioPresentation presentData = new StudioPresentation { Id = studio.Id, Name = studio.Name };
                 returnList.Add(presentData);
             }
             return returnList;
@@ -122,7 +132,7 @@ namespace GamesLibraryUWP
                 newGame.Name = txtName.Text;
                 newGame.Gener = txtGener.Text;
                 newGame.NumberOfPlayers = int.Parse(txtNumPlayers.Text);
-                newGame.Publisher.Id = selectedPublisher.Id;
+                newGame.Publisher = selectedPublisher;
                 newGame.Studio = new List<Studio>();
                 newGame.Studio.Add(gameStudio);
                 newGame.Developer = new List<Developer>();
