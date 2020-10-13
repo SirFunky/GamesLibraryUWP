@@ -13,7 +13,8 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="mnuHome" Icon="Home" Content="Home" Tag="Home" Tapped="MnuHome_Tapped"/>
                 <NavigationViewItem x:Name="mnuAdd" Icon="Add" Content="Add" Tag="Add" Tapped="MnuAdd_Tapped"  />
-                <NavigationViewItem  x:Name="mnuUpdate" Icon="Edit" Content="Change" Tag="Change"/>
+                <NavigationViewItem  x:Name="mnuUpdate" Icon="Edit" Content="Change" Tag="Change" Tapped="mnuUpdate_Tapped"/>
+                <NavigationViewItem  x:Name="mnuDelete" Icon="Delete" Content="Delete" Tag="Delete"/>
             </NavigationView.MenuItems>
             <Frame x:Name="contentFrame" Margin="12,24,0,12">
                 <StackPanel>

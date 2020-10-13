@@ -186,5 +186,10 @@ namespace GamesLibraryUWP
         {
             this.Frame.Navigate(typeof(UpdatePage));
         }
+
+        private void mnuDelete_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DeletePage));
+        }
     }
 }
