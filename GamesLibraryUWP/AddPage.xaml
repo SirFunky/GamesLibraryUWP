@@ -18,15 +18,19 @@
             <Frame x:Name="contentFrame" Margin="12,24,0,12">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock  Text="Name" Width="70" Margin="0,12,12,12"/>
+                        <TextBlock  Text="Name" Width="115" Margin="0,12,12,12"/>
                         <TextBox Name="txtName" Width="250"  Margin="0,12,12,12"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock  Text="Gener"  Width="70" Margin="0,12,12,12"/>
+                        <TextBlock  Text="Gener"  Width="115" Margin="0,12,12,12"/>
                         <TextBox Name="txtGener" Width="250"  Margin="0,12,12,12"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock  Text="Developer" Width="70" Margin="0,12,12,12"/>
+                        <TextBlock  Text="Number of players"  Width="115" Margin="0,12,12,12"/>
+                        <TextBox Name="txtNumPlayers" Width="250"  Margin="0,12,12,12"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="Developer" Width="115" Margin="0,12,12,12"/>
                         <ComboBox Name="cmbDeveloper" Width="250"  Margin="0,12,12,12">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
@@ -36,7 +40,7 @@
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock  Text="Publisher" Width="70" Margin="0,12,12,12"/>
+                        <TextBlock  Text="Publisher" Width="115" Margin="0,12,12,12"/>
                         <ComboBox Name="cmbPublisher" Width="250"  Margin="0,12,12,12">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
@@ -46,7 +50,7 @@
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock  Text="Studio" Width="70" Margin="0,12,12,12"/>
+                        <TextBlock  Text="Studio" Width="115" Margin="0,12,12,12"/>
                         <ComboBox Name="cmbStudio" Width="250"  Margin="0,12,12,12">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>

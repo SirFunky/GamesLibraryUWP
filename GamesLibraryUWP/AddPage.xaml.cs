@@ -86,8 +86,8 @@ namespace GamesLibraryUWP
                     var studioList = JsonConvert.DeserializeObject<List<Developer>>(content);
 
                     //Databind the ViewModel presentation list
-                    cmbDeveloper.ItemsSource = GetPresentationList(studioList);
-                    cmbDeveloper.SelectedIndex = 0;
+                    cmbStudio.ItemsSource = GetPresentationList(studioList);
+                    cmbStudio.SelectedIndex = 0;
                 }
             }
             catch (Exception ex)
@@ -123,11 +123,18 @@ namespace GamesLibraryUWP
 
                 Publisher selectedPublisher = (Publisher)cmbPublisher.SelectedItem;
 
+                StudioPresentation selectedStudio = (StudioPresentation)cmbStudio.SelectedItem;
+                Studio gameStudio = new Studio { Id = selectedStudio.Id, Name = selectedStudio.Name };
+
                 Game newGame = new Game();
                 newGame.Name = txtName.Text;
-                //newGame.PublisherId = selectedPublisher.Id;
-                //newGame.GameDevelopers = new List<GameDeveloper>();
-                //newGame.GameDevelopers.Add(gameDeveloper);
+                newGame.Gener = txtGener.Text;
+                //newGame.NumberOfPlayers = txtNumPlayers;
+                newGame.Publisher.Id = selectedPublisher.Id;
+                newGame.Studio = new List<Studio>();
+                newGame.Studio.Add(gameStudio);
+                newGame.Developer = new List<Developer>();
+                newGame.Developer.Add(gameDeveloper);
 
                 string jsonString = JsonConvert.SerializeObject(newGame);
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
